@@ -1,41 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+  <link rel="icon" type="image/png" href="icon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f6f7f4" id="themeColorMeta">
+  <meta name="theme-color" content="#000000" id="themeColorMeta">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Studyspace">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="description" content="A beautiful study planner with focus timer, task tracking, streaks and notes.">
-  <title>Studyspace — Your study companion</title>
+  <meta name="description" content="A calm, accessible study planner with focus timer, tasks, progress and notes.">
+  <title>Studyspace — A calmer way to study</title>
+  <link rel="icon" type="image/png" href="./studyspace-icon.png">
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="manifest.json">
 
-  <!-- Favicon & Icons -->
-  <link rel="icon" type="image/svg+xml" href="icon.svg">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
-
-  <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png">
-  <link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256x256.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512x512.png">
-
-  <!-- Apple Splash Screens -->
-  <link rel="apple-touch-startup-image" href="icons/splash-640x1136.png" media="(device-width:320px) and (device-height:568px) and (-webkit-device-pixel-ratio:2)">
-  <link rel="apple-touch-startup-image" href="icons/splash-750x1334.png" media="(device-width:375px) and (device-height:667px) and (-webkit-device-pixel-ratio:2)">
-  <link rel="apple-touch-startup-image" href="icons/splash-1080x1920.png" media="(device-width:414px) and (device-height:896px) and (-webkit-device-pixel-ratio:3)">
-  <link rel="apple-touch-startup-image" href="icons/splash-1170x2532.png" media="(device-width:390px) and (device-height:844px) and (-webkit-device-pixel-ratio:3)">
-  <link rel="apple-touch-startup-image" href="icons/splash-1284x2778.png" media="(device-width:428px) and (device-height:926px) and (-webkit-device-pixel-ratio:3)">
-
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     /* ─── TOKENS ──────────────────────────────────────────────────────────── */
@@ -142,9 +120,10 @@
     .brand-mark {
       display: grid; place-items: center;
       width: 30px; height: 30px;
-      color: white; border-radius: 9px;
-      background: var(--green);
-      transition: background var(--transition);
+      color: #8affdf; border: 1px solid rgba(111,255,219,.24); border-radius: 9px;
+      background: #000000;
+      box-shadow: 0 0 0 1px rgba(111,255,219,.06), 0 0 15px rgba(74,255,207,.2), inset 0 0 10px rgba(74,255,219,.1);
+      transition: box-shadow var(--transition), transform var(--transition);
     }
     .topbar-right { display: flex; align-items: center; gap: 8px; }
     .icon-btn {
@@ -726,9 +705,172 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
+  
+
+    /* Responsive and accessible experience */
+    :root {
+      --bg:#f5f7f5; --bg2:#edf1ee; --card:#fff; --ink:#18251f; --ink2:#35483f;
+      --muted:#61736a; --line:#dce5de; --green:#287653; --green-dark:#205c40;
+      --green-mid:#4a9a70; --green-light:#e7f3eb; --green-xlight:#f1f8f3;
+      --radius-sm:12px; --radius:20px; --radius-lg:28px;
+      --shadow-sm:0 1px 3px rgba(24,37,31,.05);
+      --shadow:0 8px 24px rgba(24,37,31,.06),0 1px 3px rgba(24,37,31,.04);
+      --shadow-lg:0 18px 48px rgba(24,37,31,.14);
+    }
+    [data-theme="dark"] {
+      --bg:#111a16; --bg2:#1b2721; --card:#18231d; --ink:#edf4ef; --ink2:#cedbd2;
+      --muted:#a5b5ab; --line:#2d3c33; --green:#63b083; --green-dark:#88d0a2;
+      --green-mid:#78c494; --green-light:#20372a; --green-xlight:#192c21;
+      --shadow-sm:0 1px 3px rgba(0,0,0,.22); --shadow:0 8px 24px rgba(0,0,0,.2);
+      --shadow-lg:0 18px 48px rgba(0,0,0,.4);
+    }
+    html { scroll-padding-top:84px; }
+    body { min-width:320px; color:var(--ink); background:radial-gradient(ellipse at 50% -25%,rgba(74,154,112,.08),transparent 55%),var(--bg); font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:15px; line-height:1.55; text-align:start; }
+    .app { width:100%; max-width:1440px; min-height:100dvh; padding-bottom:calc(88px + var(--safe-bottom)); background:transparent; }
+    .topbar { height:68px; padding-inline:clamp(18px,4vw,40px); background:color-mix(in srgb,var(--bg) 88%,transparent); }
+    .brand { font-size:18px; letter-spacing:-.035em; } .brand-mark { width:36px; height:36px; border-radius:11px; }
+    .icon-btn { width:44px; height:44px; font-size:18px; } .streak-badge { min-height:36px; padding-inline:12px; font-size:12px; }
+    .page { width:100%; max-width:760px; align-self:center; gap:0; padding:4px 20px 32px; }
+    .welcome-header { padding:24px 0 20px; } .eyebrow { font-size:11px; letter-spacing:.11em; margin-bottom:8px; }
+    .welcome-header h1 { font-size:clamp(28px,7vw,38px); font-weight:760; letter-spacing:-.045em; line-height:1.12; overflow-wrap:anywhere; }
+    .welcome-header p { margin-top:8px; color:var(--muted); font-size:14px; }
+    .card { border-color:var(--line); border-radius:var(--radius); box-shadow:var(--shadow); }
+    .card + .card,.card + .section-title { margin-top:16px; } .section-title { margin:26px 0 10px; color:var(--muted); font-size:12px; letter-spacing:.08em; }
+    .card-body { padding:clamp(18px,4vw,26px); } .card-header { align-items:center; gap:14px; }
+    .card-header h2,.tasks-top h2 { font-size:16px; font-weight:700; } .card-header p { font-size:13px; line-height:1.45; }
+    .timer-card .card-body { padding:clamp(20px,4vw,30px); } .mode-switch { gap:4px; padding:4px; }
+    .mode-btn { min-height:40px; padding:8px 12px; border-radius:9px; font-size:12px; }
+    .timer-wrap { padding:12px 0 4px; } .timer-ring { width:min(232px,72vw); height:auto; aspect-ratio:1; }
+    .timer-ring svg { height:100%; } .timer-time { font-size:clamp(48px,13vw,60px); letter-spacing:-.055em; }
+    .timer-caption { font-size:11px; letter-spacing:.08em; } .timer-subject-label { font-size:13px; }
+    .subject-pill { min-height:44px; margin-top:10px; padding:8px 14px; font-size:13px; }
+    .timer-actions { gap:10px; margin-top:18px; } .btn-primary { min-height:54px; height:auto; border-radius:13px; font-size:15px; }
+    .btn-icon { width:54px; height:54px; border-radius:13px; }
+    .progress-card .card-body { padding:22px; } .goal-title { font-size:15px; } .goal-badge { padding:6px 10px; font-size:11px; }
+    .goal-bar-wrap { margin:16px 0 12px; } .goal-bar-track { height:12px; } .goal-num-main { font-size:28px; }
+    .goal-num-sub,.goal-num-goal { font-size:13px; } .mini-stats { gap:10px; margin-top:16px; }
+    .mini-stat { padding:13px 14px; border-radius:12px; } .mini-stat b { font-size:21px; } .mini-stat span { font-size:11px; }
+    .task-count { padding:6px 10px; font-size:11px; } .filter-btn { min-height:40px; padding:7px 13px; font-size:12px; }
+    .task-list { gap:8px; } .task-item { gap:12px; padding:12px; border-radius:12px; }
+    .task-check-btn { width:44px; height:44px; min-width:44px; border-radius:12px; font-size:16px; }
+    .task-text { font-size:14px; line-height:1.45; } .task-subject-tag { font-size:11px; padding:3px 8px; }
+    .task-delete-btn { display:grid; place-items:center; width:44px; height:44px; border-radius:10px; font-size:20px; }
+    .add-task-row { gap:10px; } .add-task-input { height:48px; padding-inline:14px; border-radius:12px; font-size:16px; }
+    .add-task-btn { width:48px; height:48px; border-radius:12px; }
+    .subjects-grid { gap:12px; } .subject-card { min-height:140px; padding:16px; border-radius:14px; }
+    .subject-icon { font-size:26px; } .subject-name { font-size:13px; } .subject-tip,.subject-time { font-size:11px; }
+    .notes-textarea { min-height:220px; padding:16px; border-radius:14px; font-size:16px; }
+    .notes-save-label,.char-count { font-size:11px; } .stats-grid { gap:12px; }
+    .stat-card { padding:20px; border-radius:18px; } .stat-value { font-size:32px; } .stat-label { font-size:12px; }
+    .weekly-bars { height:112px; gap:10px; } .week-day,.best-label { font-size:11px; }
+    .bottom-nav { padding:8px 8px calc(8px + var(--safe-bottom)); box-shadow:0 -8px 24px rgba(24,37,31,.08); touch-action:manipulation; }
+    .nav-item { min-height:56px; gap:2px; padding:4px; font-size:11px; } .nav-icon { width:36px; height:36px; }
+    .modal-overlay { padding:16px; } .modal-sheet { max-height:min(84dvh,680px); overflow:auto; }
+    .sheet-title { font-size:16px; } .sheet-option { min-height:48px; font-size:14px; }
+    .complete-modal .modal-sheet { width:min(100%,420px); } .complete-title { font-size:24px; } .complete-sub { font-size:14px; }
+    .complete-stat small { font-size:11px; } .btn-secondary,.btn-green { min-height:48px; font-size:14px; }
+    .settings-item { min-height:68px; padding:14px 16px; } .settings-item-label { font-size:14px; } .settings-item-sub { font-size:12px; }
+    .spin-btn { width:40px; height:40px; font-size:20px; } .spin-value { font-size:16px; }
+    .toggle { width:50px; height:28px; } .toggle-slider::before { width:22px; height:22px; }
+    .toggle input:checked + .toggle-slider::before { transform:translateX(22px); }
+    .focus-lock-title { font-size:28px; } .focus-lock-sub { font-size:15px; } .focus-lock-time { font-size:clamp(60px,14vw,84px); }
+    .toast-container { left:16px; right:16px; top:calc(76px + var(--safe-top)); } .toast { min-height:48px; font-size:14px; }
+    .skip-link { position:fixed; z-index:1000; top:8px; inset-inline-start:8px; padding:10px 14px; border-radius:10px; background:var(--ink); color:var(--card); transform:translateY(-150%); transition:transform var(--transition); }
+    .skip-link:focus { transform:translateY(0); } :focus-visible { outline:3px solid #24865a; outline-offset:3px; }
+    [data-theme="dark"] :focus-visible { outline-color:#9be0b3; }
+    [dir="auto"],.task-text,.notes-textarea { unicode-bidi:plaintext; text-align:start; }
+    .task-item,.settings-item,.tasks-top,.card-header,.goal-meta,.goal-numbers { text-align:start; }
+    .task-item.done { opacity:.72; } .task-item.done .task-text { color:var(--muted); }
+    .subject-create-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; margin:0 0 10px; }
+    .subject-create-input { min-width:0; height:48px; padding:0 14px; border:1.5px solid var(--line); border-radius:12px; background:var(--bg2); font-size:16px; }
+    .subject-create-input:focus { outline:3px solid color-mix(in srgb,var(--green) 24%,transparent); border-color:var(--green); background:var(--card); }
+    .subject-create-btn { min-height:48px; padding:0 16px; border-radius:12px; background:var(--green); color:#fff; font-size:14px; font-weight:700; }
+    .subject-help { margin:0 0 14px; color:var(--muted); font-size:12px; }
+    .subject-card { display:flex; flex-direction:column; gap:10px; text-align:start; }
+    .subject-select { display:flex; flex:1; width:100%; flex-direction:column; align-items:flex-start; color:inherit; text-align:start; }
+    .subject-select:focus-visible { border-radius:8px; }
+    .subject-card .subject-name,.subject-card .subject-tip { overflow-wrap:anywhere; }
+    .subject-delete { min-height:40px; align-self:flex-start; padding:0 10px; border:1px solid var(--line); border-radius:10px; color:var(--muted); font-size:12px; font-weight:650; }
+    .subject-delete:hover,.subject-delete:focus-visible { border-color:var(--red); color:var(--red); background:color-mix(in srgb,var(--red) 7%,var(--card)); }
+    .timer-card { position:relative; isolation:isolate; transition:box-shadow .35s ease,border-color .35s ease; }
+    .timer-card::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:radial-gradient(ellipse at 50% 42%,rgba(64,151,102,.13),transparent 62%); opacity:0; transition:opacity .45s ease; }
+    .timer-card .card-body { position:relative; z-index:1; }
+    .timer-card.focus-running { border-color:color-mix(in srgb,var(--green) 55%,var(--line)); box-shadow:0 12px 36px rgba(40,118,83,.12),0 0 0 1px color-mix(in srgb,var(--green) 16%,transparent); }
+    .timer-card.focus-running::before { opacity:1; }
+    .timer-card.focus-running .ring-progress { filter:drop-shadow(0 0 7px rgba(63,157,105,.38)); }
+    .timer-card.focus-start-pulse { animation:focusStartPulse 1.05s cubic-bezier(.2,.8,.2,1); }
+    .timer-card.focus-start-pulse .timer-ring { animation:focusRingArrive .85s cubic-bezier(.2,.8,.2,1); }
+    .btn-primary { position:relative; overflow:hidden; }
+    .focus-start-pulse #startBtn::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(110deg,transparent 15%,rgba(255,255,255,.25) 48%,transparent 80%); transform:translateX(-120%); animation:focusButtonSweep .7s .06s ease-out both; }
+    @keyframes focusStartPulse { 0% { box-shadow:var(--shadow); } 42% { box-shadow:0 16px 42px rgba(40,118,83,.22),0 0 0 5px rgba(74,154,112,.12); } 100% { box-shadow:0 12px 36px rgba(40,118,83,.12),0 0 0 1px rgba(74,154,112,.16); } }
+    @keyframes focusRingArrive { 0% { transform:scale(.94); opacity:.78; } 70% { transform:scale(1.025); opacity:1; } 100% { transform:scale(1); } }
+    @keyframes focusButtonSweep { to { transform:translateX(120%); } }
+    @media (max-width:380px) {
+      .page { padding-inline:14px; } .card-body,.timer-card .card-body { padding:17px; }
+      .card-header { align-items:flex-start; flex-direction:column; } .mode-switch { width:100%; }
+      .timer-ring { width:min(208px,66vw); } .task-filter { gap:3px; } .filter-btn { padding-inline:9px; }
+      .subject-create-row { grid-template-columns:1fr; } .subject-create-btn { width:100%; }
+    }
+    @media (min-width:700px) {
+      .page { max-width:980px; padding:18px 34px 48px; } .welcome-header { padding:30px 0 24px; }
+      .welcome-header h1 { font-size:40px; } .page#page-home { display:none; }
+      .page#page-home.active { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr); align-content:start; column-gap:20px; row-gap:0; }
+      #page-home .welcome-header { grid-column:1 / -1; } #page-home .timer-card { grid-column:1; grid-row:2 / span 2; }
+      #page-home .progress-card { grid-column:2; grid-row:2; } #page-home .section-title { grid-column:2; margin-top:20px; }
+      #page-home > article:last-of-type { grid-column:2; }
+      .page#page-tasks,.page#page-notes { max-width:900px; } .page#page-stats { max-width:1080px; }
+      .stats-grid { grid-template-columns:repeat(4,minmax(0,1fr)); } .stat-card.wide { grid-column:1 / -1; }
+      .subjects-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } .page#page-settings { max-width:900px; }
+    }
+    @media (min-width:980px) {
+      body { background:var(--bg); } .app { padding-bottom:0; }
+      .topbar { height:76px; padding-inline:max(32px,calc((100vw - 1360px) / 2)); }
+      .bottom-nav { position:fixed; top:76px; bottom:0; left:max(0px,calc((100vw - 1440px) / 2)); right:auto; width:232px; flex-direction:column; justify-content:flex-start; align-items:stretch; gap:8px; padding:28px 14px; border-top:0; border-right:1px solid var(--line); box-shadow:none; backdrop-filter:none; background:var(--card); }
+      .nav-item { flex:0 0 auto; min-height:54px; flex-direction:row; justify-content:flex-start; gap:12px; padding:7px 12px; border-radius:12px; font-size:14px; }
+      .nav-item.active { color:var(--green-dark); background:var(--green-light); } .nav-icon { width:36px; height:36px; font-size:17px; }
+      .nav-item.active .nav-icon { background:transparent; }
+      .page,.page#page-home,.page#page-home.active { width:min(100% - 232px,1208px); max-width:1208px; margin-inline:232px 0; padding:24px clamp(32px,4vw,64px) 56px; min-height:calc(100dvh - 76px); }
+      .page#page-home.active { column-gap:24px; } .welcome-header { padding-top:22px; }
+      #page-home .timer-card { grid-row:2 / span 2; } #page-home .section-title { margin-top:20px; }
+      .toast-container { left:auto; right:24px; width:min(380px,calc(100vw - 280px)); }
+      .modal-overlay { place-items:center; }
+      .modal-sheet { width:min(100%,580px); border-radius:var(--radius-lg); padding-bottom:24px; transform:translateY(12px) scale(.98); }
+      .modal-overlay.open .modal-sheet { transform:translateY(0) scale(1); } .sheet-options { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      .timer-card.focus-start-pulse,.timer-card.focus-start-pulse .timer-ring,.focus-start-pulse #startBtn::after { animation:none !important; }
+      .timer-card,.timer-card::before { transition:none; }
+    }
+
+    .appearance-wrap { margin: 0 0 26px; }
+    .appearance-trigger { width:100%; display:flex; align-items:center; justify-content:space-between; padding:16px 18px; border:1px solid var(--line); border-radius:var(--radius); color:var(--ink); background:var(--card); box-shadow:var(--shadow-sm); text-align:left; transition:border-color var(--transition),transform var(--transition); }
+    .appearance-trigger:hover { border-color:var(--green-mid); transform:translateY(-1px); }
+    .appearance-trigger-main { display:flex; align-items:center; gap:12px; }
+    .appearance-trigger-icon { display:grid; place-items:center; width:40px; height:40px; border-radius:13px; color:var(--green-dark); background:var(--green-light); font-size:19px; }
+    .appearance-trigger-title { font-size:14px; font-weight:750; }
+    .appearance-trigger-sub { margin-top:2px; color:var(--muted); font-size:11px; }
+    .appearance-chevron { color:var(--muted); font-size:18px; transition:transform var(--transition); }
+    .appearance-trigger[aria-expanded="true"] .appearance-chevron { transform:rotate(180deg); }
+    .appearance-panel { margin-top:10px; padding:18px; border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow-sm); }
+    .appearance-panel[hidden] { display:none; }
+    .appearance-section + .appearance-section { margin-top:22px; }
+    .appearance-section-title { margin-bottom:10px; color:var(--ink2); font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+    .theme-choice-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
+    .theme-choice { display:flex; align-items:center; justify-content:center; gap:8px; min-height:46px; padding:10px; border:1px solid var(--line); border-radius:12px; color:var(--ink2); background:var(--bg); font-size:13px; font-weight:700; transition:all var(--transition); }
+    .theme-choice:hover { border-color:var(--green-mid); }
+    .theme-choice[aria-pressed="true"] { color:var(--green-dark); border-color:var(--green-mid); background:var(--green-light); box-shadow:inset 0 0 0 1px var(--green-mid); }
+    .palette-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:7px; }
+    .palette-swatch { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; min-width:0; padding:8px 3px; border:1px solid transparent; border-radius:12px; color:var(--ink2); background:transparent; transition:all var(--transition); }
+    .palette-swatch:hover { background:var(--bg); }
+    .palette-swatch[aria-pressed="true"] { border-color:var(--green-mid); background:var(--green-light); box-shadow:inset 0 0 0 1px var(--green-mid); }
+    .palette-dot { width:30px; height:30px; border:1px solid rgba(26,37,32,.14); border-radius:50%; background:var(--swatch); box-shadow:inset 0 0 0 4px rgba(255,255,255,.28); }
+    .palette-name { width:100%; overflow:hidden; color:inherit; font-size:9px; font-weight:650; line-height:1.2; text-align:center; text-overflow:ellipsis; white-space:nowrap; }
+    @media (max-width:360px) { .appearance-panel { padding:14px; } .palette-grid { grid-template-columns:repeat(5,minmax(0,1fr)); } .palette-dot { width:27px; height:27px; } }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#page-home">Skip to study dashboard</a>
 
 <!-- ─── APP SHELL ──────────────────────────────────────────────────────────── -->
 <div class="app">
@@ -737,8 +879,9 @@
   <header class="topbar">
     <div class="brand">
       <span class="brand-mark" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 13l4 4L19 7"/>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 19.5c-2.2-1.6-5-2.1-8-1.6V5.8c3-.5 5.8 0 8 1.6m0 12.1c2.2-1.6 5-2.1 8-1.6V5.8c-3-.5-5.8 0-8 1.6"/>
+          <path d="M12 7.4v12.1M17.7 3.5v3.2m-1.6-1.6h3.2"/>
         </svg>
       </span>
       Studyspace
@@ -768,8 +911,8 @@
             <p>One thing at a time. You've got this.</p>
           </div>
           <div class="mode-switch" role="tablist">
-            <button class="mode-btn active" data-mode="focus" role="tab" aria-selected="true">🎯 Focus</button>
-            <button class="mode-btn" data-mode="break" role="tab" aria-selected="false">☕ Break</button>
+            <button type="button" class="mode-btn active" data-mode="focus" role="tab" aria-selected="true">🎯 Focus</button>
+            <button type="button" class="mode-btn" data-mode="break" role="tab" aria-selected="false">☕ Break</button>
           </div>
         </div>
 
@@ -788,7 +931,7 @@
         </div>
 
         <div style="display:flex;justify-content:center;">
-          <button class="subject-pill" id="subjectPill">
+          <button type="button" class="subject-pill" id="subjectPill" aria-haspopup="dialog" aria-label="Choose a study subject">
             <span id="subjectPillIcon">📐</span>
             <span id="subjectPillName">Mathematics</span>
             <span style="color:var(--muted);font-size:13px">›</span>
@@ -800,7 +943,7 @@
             <span id="startBtnIcon">▶</span>
             <span id="startBtnLabel">Start focusing</span>
           </button>
-          <button class="btn-icon" id="resetBtn" aria-label="Reset timer">↺</button>
+          <button type="button" class="btn-icon" id="resetBtn" aria-label="Reset timer">↺</button>
         </div>
       </div>
     </article>
@@ -847,7 +990,7 @@
         </div>
         <div class="task-list" id="homeTaskList"></div>
         <form class="add-task-row" id="homeTaskForm" style="margin-top:10px;">
-          <input class="add-task-input" id="homeTaskInput" placeholder="Quick add a task…" maxlength="100" required aria-label="Add study task">
+          <input dir="auto" class="add-task-input" id="homeTaskInput" placeholder="Quick add a task…" maxlength="100" required aria-label="Add study task">
           <button class="add-task-btn" type="submit" aria-label="Add task">+</button>
         </form>
       </div>
@@ -873,7 +1016,7 @@
         </div>
         <div class="task-list" id="tasksPageList"></div>
         <form class="add-task-row" id="tasksPageForm" style="margin-top:10px;">
-          <input class="add-task-input" id="tasksPageInput" placeholder="Add a study task…" maxlength="100" required aria-label="Add study task">
+          <input dir="auto" class="add-task-input" id="tasksPageInput" placeholder="Add a study task…" maxlength="100" required aria-label="Add study task">
           <button class="add-task-btn" type="submit" aria-label="Add task">+</button>
         </form>
       </div>
@@ -936,7 +1079,7 @@
       <div class="card-body">
         <h2 style="font-size:13px;font-weight:750;margin-bottom:8px;">✏️ Study notes</h2>
         <p class="text-muted" style="font-size:10px;margin-bottom:12px;">Write down thoughts, questions, or things to remember.</p>
-        <textarea class="notes-textarea" id="notes" placeholder="Start typing…" aria-label="Study notes"></textarea>
+        <textarea dir="auto" class="notes-textarea" id="notes" placeholder="Start typing…" aria-label="Study notes"></textarea>
         <div class="notes-footer">
           <span class="notes-save-label" id="saveLabel">Auto-saved on this device</span>
           <span class="char-count" id="charCount">0 chars</span>
@@ -945,6 +1088,11 @@
     </article>
 
     <div class="section-title">STUDY SUBJECTS</div>
+    <form class="subject-create-row" id="subjectForm">
+      <input dir="auto" class="subject-create-input" id="subjectNameInput" type="text" maxlength="30" placeholder="Name a subject…" aria-label="New subject name" autocomplete="off" required>
+      <button class="subject-create-btn" type="submit">+ Add subject</button>
+    </form>
+    <p class="subject-help">Select a subject for your focus timer. Remove subjects you no longer need.</p>
     <div class="subjects-grid" id="subjectsGrid"></div>
   </div>
 
@@ -955,6 +1103,47 @@
       <h1>Settings</h1>
     </div>
 
+    <div class="appearance-wrap">
+      <button class="appearance-trigger" id="appearanceToggle" type="button" aria-expanded="false" aria-controls="appearancePanel">
+        <span class="appearance-trigger-main">
+          <span class="appearance-trigger-icon" aria-hidden="true">🎨</span>
+          <span><span class="appearance-trigger-title" style="display:block;">Customize appearance</span><span class="appearance-trigger-sub" style="display:block;">Choose a theme and background color</span></span>
+        </span>
+        <span class="appearance-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div class="appearance-panel" id="appearancePanel" hidden>
+        <section class="appearance-section" aria-labelledby="themeChoiceHeading">
+          <div class="appearance-section-title" id="themeChoiceHeading">Color mode</div>
+          <div class="theme-choice-grid">
+            <button class="theme-choice" id="lightModeBtn" type="button" data-theme-choice="light" aria-pressed="false">☀️ <span>Light</span></button>
+            <button class="theme-choice" id="darkModeBtn" type="button" data-theme-choice="dark" aria-pressed="false">🌙 <span>Dark</span></button>
+          </div>
+        </section>
+        <section class="appearance-section" aria-labelledby="paletteHeading">
+          <div class="appearance-section-title" id="paletteHeading">Background palette</div>
+          <div class="palette-grid" id="paletteGrid" role="group" aria-label="Choose a background color">
+            <button class="palette-swatch" type="button" data-palette-choice="meadow" aria-label="Meadow background" aria-pressed="false" title="Meadow"><span class="palette-dot" style="--swatch:#dcece2"></span><span class="palette-name">Meadow</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="ocean" aria-label="Ocean background" aria-pressed="false" title="Ocean"><span class="palette-dot" style="--swatch:#dcebf0"></span><span class="palette-name">Ocean</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="lavender" aria-label="Lavender background" aria-pressed="false" title="Lavender"><span class="palette-dot" style="--swatch:#e8e2f4"></span><span class="palette-name">Lavender</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="rose" aria-label="Rose background" aria-pressed="false" title="Rose"><span class="palette-dot" style="--swatch:#f3e2e7"></span><span class="palette-name">Rose</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="peach" aria-label="Peach background" aria-pressed="false" title="Peach"><span class="palette-dot" style="--swatch:#f3e4d8"></span><span class="palette-name">Peach</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="sand" aria-label="Sand background" aria-pressed="false" title="Sand"><span class="palette-dot" style="--swatch:#eee8d8"></span><span class="palette-name">Sand</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="mint" aria-label="Mint background" aria-pressed="false" title="Mint"><span class="palette-dot" style="--swatch:#dcefe8"></span><span class="palette-name">Mint</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="sky" aria-label="Sky background" aria-pressed="false" title="Sky"><span class="palette-dot" style="--swatch:#dfeaf6"></span><span class="palette-name">Sky</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="butter" aria-label="Butter background" aria-pressed="false" title="Butter"><span class="palette-dot" style="--swatch:#f2edcf"></span><span class="palette-name">Butter</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="coral" aria-label="Coral background" aria-pressed="false" title="Coral"><span class="palette-dot" style="--swatch:#f2dfd8"></span><span class="palette-name">Coral</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="plum" aria-label="Plum background" aria-pressed="false" title="Plum"><span class="palette-dot" style="--swatch:#eee1ed"></span><span class="palette-name">Plum</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="forest" aria-label="Forest background" aria-pressed="false" title="Forest"><span class="palette-dot" style="--swatch:#dfe9dc"></span><span class="palette-name">Forest</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="slate" aria-label="Slate background" aria-pressed="false" title="Slate"><span class="palette-dot" style="--swatch:#e2e7eb"></span><span class="palette-name">Slate</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="ice" aria-label="Ice background" aria-pressed="false" title="Ice"><span class="palette-dot" style="--swatch:#e0eff2"></span><span class="palette-name">Ice</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="lilac" aria-label="Lilac background" aria-pressed="false" title="Lilac"><span class="palette-dot" style="--swatch:#ece5f4"></span><span class="palette-name">Lilac</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="teal" aria-label="Teal background" aria-pressed="false" title="Teal"><span class="palette-dot" style="--swatch:#d8ece9"></span><span class="palette-name">Teal</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="citrus" aria-label="Citrus background" aria-pressed="false" title="Citrus"><span class="palette-dot" style="--swatch:#eaf0d6"></span><span class="palette-name">Citrus</span></button>
+            <button class="palette-swatch" type="button" data-palette-choice="berry" aria-label="Berry background" aria-pressed="false" title="Berry"><span class="palette-dot" style="--swatch:#f0e0e7"></span><span class="palette-name">Berry</span></button>
+          </div>
+        </section>
+      </div>
+    </div>
     <div class="section-title">TIMER</div>
     <div class="settings-group">
       <div class="settings-item">
@@ -1142,7 +1331,7 @@
 
   /* ─── CONSTANTS ─────────────────────────────────────────────────────────── */
   const KEY = 'studyspace-v2';
-  const SUBJECTS = [
+  const DEFAULT_SUBJECTS = [
     { id: 'math',    icon: '📐', name: 'Mathematics',     tip: 'Practice daily' },
     { id: 'bio',     icon: '🧬', name: 'Biology',         tip: 'Review notes'   },
     { id: 'hist',    icon: '🌍', name: 'History',         tip: 'Build timeline' },
@@ -1153,7 +1342,8 @@
     { id: 'art',     icon: '🎨', name: 'Art & Design',    tip: 'Create daily'   },
     { id: 'other',   icon: '📖', name: 'Other',           tip: 'Keep learning'  },
   ];
-  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const weekdayFormat = new Intl.DateTimeFormat(undefined, { weekday: 'short' });
+  const dateKey = d => [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'), String(d.getDate()).padStart(2, '0')].join('-');
   const FULL_DASH = 628.32; // 2 * π * 100
 
   /* ─── DEFAULTS ───────────────────────────────────────────────────────────── */
@@ -1172,6 +1362,8 @@
     totalSessions: 0,
     totalMins: 0,
     subjectMins: {},   // keyed by subject id
+    customSubjects: [],
+    deletedSubjects: [],
   });
 
   /* ─── STATE ──────────────────────────────────────────────────────────────── */
@@ -1183,8 +1375,22 @@
   for (const k in def) if (S[k] === undefined) S[k] = def[k];
   if (!S.settings) S.settings = def.settings;
   for (const k in def.settings) if (S.settings[k] === undefined) S.settings[k] = def.settings[k];
+  S.deletedSubjects = Array.isArray(S.deletedSubjects)
+    ? S.deletedSubjects.filter(id => DEFAULT_SUBJECTS.some(subject => subject.id === id))
+    : [];
+  S.customSubjects = Array.isArray(S.customSubjects)
+    ? S.customSubjects.filter(subject => subject && typeof subject.id === 'string' && /^custom-[a-z0-9-]+$/i.test(subject.id) && typeof subject.name === 'string')
+    : [];
+  let SUBJECTS = [
+    ...DEFAULT_SUBJECTS.filter(subject => !S.deletedSubjects.includes(subject.id)),
+    ...S.customSubjects.map(subject => ({ ...subject, icon: '📚', tip: 'Your study subject' }))
+  ];
+  if (!SUBJECTS.length) {
+    S.deletedSubjects = [];
+    SUBJECTS = [DEFAULT_SUBJECTS[0]];
+  }
 
-  const TODAY = () => new Date().toLocaleDateString('en-CA');
+  const TODAY = () => dateKey(new Date());
   const todayStudy = () => {
     const d = TODAY();
     if (!S.study[d]) S.study[d] = { minutes: 0, sessions: 0 };
@@ -1201,6 +1407,8 @@
   let secondsLeft = S.settings.focusMins * 60;
   let totalSecs = S.settings.focusMins * 60;
   let timerInterval = null;
+  let focusEffectTimer = null;
+  function clearFocusStartEffect() { window.clearTimeout(focusEffectTimer); focusEffectTimer = null; document.querySelector(".timer-card").classList.remove("focus-start-pulse"); }
   let currentSubject = SUBJECTS[0];
   let taskFilter = 'all';
   let pendingSubject = SUBJECTS[0];
@@ -1219,7 +1427,7 @@
     const container = document.querySelector('.toast-container');
     const el = document.createElement('div');
     el.className = 'toast';
-    el.innerHTML = `<span class="toast-icon">${icon}</span><span>${msg}</span>`;
+    el.innerHTML = `<span class="toast-icon">${safeText(icon)}</span><span>${safeText(msg)}</span>`;
     container.appendChild(el);
     requestAnimationFrame(() => { requestAnimationFrame(() => el.classList.add('show')); });
     setTimeout(() => {
@@ -1275,7 +1483,9 @@
   /* ─── STREAK CALCULATION ──────────────────────────────────────────────────── */
   function updateStreak() {
     const today = TODAY();
-    const yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-CA');
+    const yesterdayDate = new Date();
+    yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+    const yesterday = dateKey(yesterdayDate);
     const ts = todayStudy();
     if (ts.minutes >= S.settings.goalMins) {
       if (S.lastStudyDate === yesterday || S.lastStudyDate === today) {
@@ -1304,16 +1514,94 @@
     $('welcomeDate').textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
   }
 
-  /* ─── THEME ──────────────────────────────────────────────────────────────── */
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  let darkMode = localStorage.getItem('studyspace-theme') === 'dark' || (localStorage.getItem('studyspace-theme') === null && prefersDark.matches);
+  /* ─── THEME & APPEARANCE ─────────────────────────────────────────────────── */
+  const darkDefaultKey = 'studyspace-black-default-v1';
+  if (localStorage.getItem(darkDefaultKey) === null) {
+    localStorage.setItem('studyspace-theme', 'dark');
+    localStorage.setItem(darkDefaultKey, 'set');
+  }
+  let darkMode = localStorage.getItem('studyspace-theme') !== 'light';
+  const appearancePalettes = [
+    { id:'meadow', name:'Meadow', lightBg:'#f4f6f3', lightAccent:'#34785f', darkBg:'#000000', darkAccent:'#4a9a7a' },
+    { id:'ocean', name:'Ocean', lightBg:'#f2f7f8', lightAccent:'#397b91', darkBg:'#11191d', darkAccent:'#65a9bd' },
+    { id:'lavender', name:'Lavender', lightBg:'#f7f5fb', lightAccent:'#7565a7', darkBg:'#18151e', darkAccent:'#a99ad4' },
+    { id:'rose', name:'Rose', lightBg:'#faf5f6', lightAccent:'#a35e73', darkBg:'#1c1518', darkAccent:'#d8899f' },
+    { id:'peach', name:'Peach', lightBg:'#faf6f1', lightAccent:'#a46a45', darkBg:'#1c1713', darkAccent:'#d69b72' },
+    { id:'sand', name:'Sand', lightBg:'#f8f6ef', lightAccent:'#837342', darkBg:'#1a1812', darkAccent:'#b7a468' },
+    { id:'mint', name:'Mint', lightBg:'#f2f8f5', lightAccent:'#41836c', darkBg:'#111a16', darkAccent:'#69b795' },
+    { id:'sky', name:'Sky', lightBg:'#f3f7fb', lightAccent:'#4c78a8', darkBg:'#121820', darkAccent:'#78a9d6' },
+    { id:'butter', name:'Butter', lightBg:'#faf8eb', lightAccent:'#8a7b3f', darkBg:'#1b1911', darkAccent:'#bdae68' },
+    { id:'coral', name:'Coral', lightBg:'#faf5f2', lightAccent:'#a96352', darkBg:'#1b1513', darkAccent:'#d89180' },
+    { id:'plum', name:'Plum', lightBg:'#f8f4f8', lightAccent:'#8c648d', darkBg:'#1a151b', darkAccent:'#bd91bf' },
+    { id:'forest', name:'Forest', lightBg:'#f4f7f1', lightAccent:'#577b4f', darkBg:'#141912', darkAccent:'#83a978' },
+    { id:'slate', name:'Slate', lightBg:'#f4f6f7', lightAccent:'#61798a', darkBg:'#14181b', darkAccent:'#8ca7b8' },
+    { id:'ice', name:'Ice', lightBg:'#f2f8f8', lightAccent:'#4c858b', darkBg:'#111a1b', darkAccent:'#74b2b6' },
+    { id:'lilac', name:'Lilac', lightBg:'#f8f5fa', lightAccent:'#80699b', darkBg:'#19151c', darkAccent:'#ae97c8' },
+    { id:'teal', name:'Teal', lightBg:'#f1f8f7', lightAccent:'#367d76', darkBg:'#111918', darkAccent:'#63b1a7' },
+    { id:'citrus', name:'Citrus', lightBg:'#f7f8ef', lightAccent:'#74813f', darkBg:'#181a12', darkAccent:'#a6b568' },
+    { id:'berry', name:'Berry', lightBg:'#faf4f7', lightAccent:'#9a5e79', darkBg:'#1b1519', darkAccent:'#d18aa8' }
+  ];
+  const savedPalette = localStorage.getItem('studyspace-palette');
+  let selectedPaletteId = appearancePalettes.some(palette => palette.id === savedPalette) ? savedPalette : 'meadow';
+
+  function blendColor(first, second, amount) {
+    const a = first.match(/[0-9a-f]{2}/gi).map(value => parseInt(value, 16));
+    const b = second.match(/[0-9a-f]{2}/gi).map(value => parseInt(value, 16));
+    return '#' + a.map((value, index) => Math.round(value + (b[index] - value) * amount).toString(16).padStart(2, '0')).join('');
+  }
 
   function applyTheme() {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    const root = document.documentElement;
+    const palette = appearancePalettes.find(item => item.id === selectedPaletteId) || appearancePalettes[0];
+    const bg = darkMode ? palette.darkBg : palette.lightBg;
+    const accent = darkMode ? palette.darkAccent : palette.lightAccent;
+    const colors = {
+      bg, bg2: blendColor(bg, accent, darkMode ? .12 : .06),
+      card: darkMode ? blendColor(bg, accent, .2) : blendColor('#ffffff', accent, .08),
+      line: darkMode ? blendColor(bg, accent, .38) : blendColor('#e4e9e3', accent, .2),
+      green: accent,
+      'green-dark': darkMode ? blendColor(accent, '#ffffff', .28) : blendColor(accent, '#18211c', .22),
+      'green-mid': blendColor(accent, '#ffffff', darkMode ? .12 : .18),
+      'green-light': blendColor(bg, accent, darkMode ? .22 : .12),
+      'green-xlight': blendColor(bg, accent, darkMode ? .15 : .045)
+    };
+    root.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    Object.keys(colors).forEach(name => root.style.setProperty('--' + name, colors[name]));
     $('themeToggle').textContent = darkMode ? '☀️' : '🌙';
-    $('themeColorMeta').content = darkMode ? '#111816' : '#f4f6f3';
+    $('themeToggle').setAttribute('aria-label', darkMode ? 'Switch to light mode' : 'Switch to dark mode');
+    $('themeColorMeta').content = bg;
+    $('lightModeBtn').setAttribute('aria-pressed', String(!darkMode));
+    $('darkModeBtn').setAttribute('aria-pressed', String(darkMode));
+    document.querySelectorAll('[data-palette-choice]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.paletteChoice === selectedPaletteId));
+    });
   }
   applyTheme();
+
+  $('appearanceToggle').addEventListener('click', () => {
+    const expanded = $('appearanceToggle').getAttribute('aria-expanded') === 'true';
+    $('appearanceToggle').setAttribute('aria-expanded', String(!expanded));
+    $('appearancePanel').hidden = expanded;
+    haptic('light');
+  });
+
+  document.querySelectorAll('[data-theme-choice]').forEach(button => {
+    button.addEventListener('click', () => {
+      darkMode = button.dataset.themeChoice === 'dark';
+      localStorage.setItem('studyspace-theme', darkMode ? 'dark' : 'light');
+      applyTheme();
+      haptic('light');
+    });
+  });
+
+  document.querySelectorAll('[data-palette-choice]').forEach(button => {
+    button.addEventListener('click', () => {
+      selectedPaletteId = button.dataset.paletteChoice;
+      localStorage.setItem('studyspace-palette', selectedPaletteId);
+      applyTheme();
+      haptic('light');
+    });
+  });
 
   $('themeToggle').addEventListener('click', () => {
     darkMode = !darkMode;
@@ -1321,7 +1609,6 @@
     applyTheme();
     haptic('light');
   });
-
   /* ─── NAVIGATION ─────────────────────────────────────────────────────────── */
   function navigate(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1361,6 +1648,10 @@
     $('goalFill').classList.toggle('active', timerInterval !== null && mode === 'focus');
 
     const isRunning = timerInterval !== null;
+    const timerCard = document.querySelector('.timer-card');
+    timerCard.classList.toggle('focus-running', isRunning && mode === 'focus');
+    $('startBtn').setAttribute('aria-pressed', String(isRunning));
+    $('startBtn').setAttribute('aria-label', isRunning ? (mode === 'focus' ? 'Pause focus session' : 'Pause break') : (mode === 'focus' ? 'Start focus session' : 'Start break'));
     $('startBtn').classList.toggle('break-active', mode === 'break');
     $('startBtnIcon').textContent = isRunning ? '⏸' : '▶';
     $('startBtnLabel').textContent = isRunning ? 'Pause' : (secondsLeft < totalSecs ? 'Resume' : (mode === 'focus' ? 'Start focusing' : 'Start break'));
@@ -1390,6 +1681,7 @@
       // Pause
       clearInterval(timerInterval);
       timerInterval = null;
+      clearFocusStartEffect();
       renderTimer();
       if (S.settings.focusLock) hideFocusLock();
       haptic('medium');
@@ -1399,12 +1691,20 @@
     if (S.settings.focusLock && mode === 'focus') showFocusLock();
     // Resume / Start
     timerInterval = setInterval(tick, 1000);
+    if (mode === 'focus') {
+      clearFocusStartEffect();
+      const card = document.querySelector('.timer-card');
+      void card.offsetWidth;
+      card.classList.add('focus-start-pulse');
+      focusEffectTimer = window.setTimeout(clearFocusStartEffect, 1100);
+    }
     renderTimer();
   });
 
   $('resetBtn').addEventListener('click', () => {
     clearInterval(timerInterval);
     timerInterval = null;
+    clearFocusStartEffect();
     totalSecs = (mode === 'focus' ? S.settings.focusMins : S.settings.breakMins) * 60;
     secondsLeft = totalSecs;
     renderTimer();
@@ -1493,7 +1793,7 @@
     container.innerHTML = SUBJECTS.map(s => `
       <button class="sheet-option ${s.id === currentSubject.id ? 'selected' : ''}" data-sid="${s.id}">
         <span class="sheet-option-icon">${s.icon}</span>
-        <span>${s.name}</span>
+        <span>${safeText(s.name)}</span>
       </button>
     `).join('');
     pendingSubject = currentSubject;
@@ -1576,10 +1876,10 @@
       <div class="task-item ${task.done ? 'done' : ''}" data-id="${task.id}">
         <button class="task-check-btn" data-action="toggle" aria-label="Toggle task">${task.done ? '✓' : ''}</button>
         <div class="task-body">
-          <div class="task-text">${safeText(task.text)}</div>
+          <div class="task-text" dir="auto">${safeText(task.text)}</div>
           ${!compact ? `<div class="task-meta">
             <span class="task-priority ${task.priority === 'high' ? 'priority-high' : task.priority === 'med' ? 'priority-med' : 'priority-low'}"></span>
-            <span class="task-subject-tag">${subj.icon} ${subj.name}</span>
+            <span class="task-subject-tag">${subj.icon} ${safeText(subj.name)}</span>
           </div>` : ''}
         </div>
         <button class="task-delete-btn" data-action="delete" aria-label="Delete task">×</button>
@@ -1696,31 +1996,111 @@
     }, 600);
   });
 
-  /* ─── SUBJECTS GRID ──────────────────────────────────────────────────────── */
+  /* ─── SUBJECT MANAGEMENT ─────────────────────────────────────────────────── */
   function renderSubjectsGrid() {
     const grid = $('subjectsGrid');
     if (!grid) return;
-    grid.innerHTML = SUBJECTS.slice(0, 6).map(s => `
-      <div class="subject-card ${s.id === currentSubject.id ? 'selected' : ''}" data-sid="${s.id}" tabindex="0" role="button" aria-label="Select ${s.name}">
-        <div class="subject-icon">${s.icon}</div>
-        <div class="subject-name">${s.name}</div>
-        <div class="subject-tip">${s.tip}</div>
-        <div class="subject-time">${S.subjectMins[s.id] ? `${S.subjectMins[s.id]} min` : 'No sessions yet'}</div>
-      </div>
+    grid.innerHTML = SUBJECTS.map(s => `
+      <article class="subject-card ${s.id === currentSubject.id ? 'selected' : ''}">
+        <button type="button" class="subject-select" data-sid="${safeText(s.id)}" aria-pressed="${s.id === currentSubject.id}">
+          <span class="subject-icon" aria-hidden="true">${safeText(s.icon)}</span>
+          <span class="subject-name">${safeText(s.name)}</span>
+          <span class="subject-tip">${safeText(s.tip)}</span>
+          <span class="subject-time">${S.subjectMins[s.id] ? S.subjectMins[s.id] + ' min studied' : 'No sessions yet'}</span>
+        </button>
+        <button type="button" class="subject-delete" data-delete-subject="${safeText(s.id)}" aria-label="Delete ${safeText(s.name)}">Remove</button>
+      </article>
     `).join('');
-    grid.querySelectorAll('.subject-card').forEach(card => {
-      const activate = () => {
-        currentSubject = SUBJECTS.find(s => s.id === card.dataset.sid) || SUBJECTS[0];
-        grid.querySelectorAll('.subject-card').forEach(c => c.classList.toggle('selected', c === card));
+
+    grid.querySelectorAll('.subject-select').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentSubject = SUBJECTS.find(s => s.id === btn.dataset.sid) || SUBJECTS[0];
+        grid.querySelectorAll('.subject-card').forEach(card => {
+          const selected = card.querySelector('.subject-select') === btn;
+          card.classList.toggle('selected', selected);
+          card.querySelector('.subject-select').setAttribute('aria-pressed', String(selected));
+        });
         renderTimer();
         haptic('light');
-        toast(`Switched to ${currentSubject.name}`, currentSubject.icon);
-      };
-      card.addEventListener('click', activate);
-      card.addEventListener('keydown', e => e.key === 'Enter' && activate());
+        toast(`Switched to ${safeText(currentSubject.name)}`, currentSubject.icon);
+      });
+    });
+    grid.querySelectorAll('.subject-delete').forEach(btn => {
+      btn.addEventListener('click', () => removeSubject(btn.dataset.deleteSubject));
     });
   }
 
+  function addSubject(rawName) {
+    const name = String(rawName || '').trim().replace(/\s+/g, ' ');
+    if (!name) return false;
+    const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
+    if (SUBJECTS.some(subject => collator.compare(subject.name, name) === 0)) {
+      toast('A subject with that name already exists.', 'ℹ️');
+      return false;
+    }
+    const subject = {
+      id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      icon: '📚',
+      name,
+      tip: 'Your study subject'
+    };
+    S.customSubjects.push(subject);
+    SUBJECTS.push(subject);
+    currentSubject = subject;
+    save();
+    renderSubjectsGrid();
+    renderTimer();
+    haptic('light');
+    toast(`Added ${safeText(name)}`, subject.icon);
+    return true;
+  }
+
+  function removeSubject(id) {
+    const subject = SUBJECTS.find(item => item.id === id);
+    if (!subject) return;
+    if (SUBJECTS.length <= 1) {
+      toast('Keep at least one subject. Add another first.', '📚');
+      return;
+    }
+    if (timerInterval && currentSubject.id === id) {
+      toast('Pause the focus timer before removing its current subject.', '⏸');
+      return;
+    }
+    const fallback = SUBJECTS.find(item => item.id !== id && item.id === 'other')
+      || SUBJECTS.find(item => item.id !== id);
+    if (!window.confirm(`Remove "${subject.name}"? Its tasks will move to "${fallback.name}" and its saved subject time will be removed.`)) return;
+
+    if (DEFAULT_SUBJECTS.some(item => item.id === id)) {
+      S.deletedSubjects.push(id);
+    } else {
+      S.customSubjects = S.customSubjects.filter(item => item.id !== id);
+    }
+    SUBJECTS = SUBJECTS.filter(item => item.id !== id);
+    S.tasks.forEach(task => {
+      if (task.subject === id) task.subject = fallback.id;
+    });
+    delete S.subjectMins[id];
+    if (currentSubject.id === id) currentSubject = fallback;
+    if (pendingSubject.id === id) pendingSubject = fallback;
+    save();
+    renderSubjectsGrid();
+    renderHomeTasks();
+    renderTasksPage();
+    renderTimer();
+    haptic('medium');
+    toast(`${safeText(subject.name)} removed`, '✓');
+  }
+
+  $('subjectForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const input = $('subjectNameInput');
+    if (addSubject(input.value)) {
+      input.value = '';
+      input.focus();
+    } else if (input.value.trim()) {
+      input.select();
+    }
+  });
   /* ─── STATS ──────────────────────────────────────────────────────────────── */
   function renderStats() {
     $('statStreak').textContent = S.streak || 0;
@@ -1737,10 +2117,10 @@
     for (let i = 6; i >= 0; i--) {
       const d = new Date(today);
       d.setDate(today.getDate() - i);
-      const key = d.toLocaleDateString('en-CA');
+      const key = dateKey(d);
       const mins = (S.study[key] || {}).minutes || 0;
       if (mins > maxMins) maxMins = mins;
-      weekData.push({ day: DAYS[d.getDay()], mins, isToday: i === 0 });
+      weekData.push({ day: weekdayFormat.format(d), mins, isToday: i === 0 });
     }
     bars.innerHTML = weekData.map(d => `
       <div class="week-bar-wrap">
@@ -1758,7 +2138,7 @@
     grid.innerHTML = SUBJECTS.filter(s => (S.subjectMins[s.id] || 0) > 0).map(s => `
       <div class="subject-card">
         <div class="subject-icon">${s.icon}</div>
-        <div class="subject-name">${s.name}</div>
+        <div class="subject-name">${safeText(s.name)}</div>
         <div class="subject-time">${S.subjectMins[s.id]} min</div>
       </div>
     `).join('') || '<div class="text-muted" style="grid-column:span 2;text-align:center;padding:20px;font-size:12px;">Complete a session to see subject stats.</div>';
@@ -1852,15 +2232,5 @@
 })();
 </script>
 
-<!-- Service Worker Registration -->
-<script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('[SW] Registered, scope:', reg.scope))
-      .catch(err => console.warn('[SW] Registration failed:', err));
-  });
-}
-</script>
 </body>
 </html>
